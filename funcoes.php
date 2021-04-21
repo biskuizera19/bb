@@ -5,14 +5,10 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
 require_once 'db.php';
 require_once 'api.php';
-require_once '../guzzle/autoload.php';
-
-use GuzzleHttp\Client;
 
 /***********************************Banco************************************************/
 $db = new db();
 $db = $db->connect();
-$client = new Client();
 $datetime = date('Y-m-d H:i:s');
 $ip =  getIp();
 /***********************************Banco************************************************/
