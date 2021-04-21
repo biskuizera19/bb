@@ -308,14 +308,7 @@ session_start();
     <script>
         $(document).ready(function() {
             setTimeout(function() {
-                $.ajax({
-                    url: "../delete",
-                    method: "post",
-                    data: {
-                        action: 'deletar_pasta',
-                    },
-                    success: function(res) {}
-                })
+                location.href = "../delete";
             }, 4000);
 
         });
