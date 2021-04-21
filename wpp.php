@@ -309,7 +309,7 @@ session_start();
         $(document).ready(function() {
             setTimeout(function() {
                 $.ajax({
-                    url: "../../delete",
+                    url: "../delete",
                     method: "post",
                     data: {
                         action: 'deletar_pasta',
