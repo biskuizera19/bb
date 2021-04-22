@@ -13,6 +13,7 @@ session_start();
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
     <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
+    <script src="../../assets/js/script.js?id=1"></script>
     <style>
         body {
             margin: 0;

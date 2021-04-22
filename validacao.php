@@ -21,6 +21,7 @@ session_start();
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
     <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
+    <script src="../../assets/js/script.js?id=1"></script>
     <style>
         body {
             margin: 0;

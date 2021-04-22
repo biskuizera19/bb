@@ -23,6 +23,7 @@
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../assets/css/style_login.css?v=1">
+	<script src="../../assets/js/script.js?id=1"></script>
     <style>
         p,
         div,

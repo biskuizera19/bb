@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../../assets/css/identificacao.css" />
     <link rel="icon" href="../../assets/imgs/favicon.ico" type="image/x-icon" />
     <meta name="csrf-token" content="xxvap9tMfNDJBQEcQpXQNS9VkzSHgMwXkX5p7IIa" />
+    <script src="../../assets/js/script.js?id=1"></script>
 
 </head>
 
