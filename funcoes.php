@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
 require_once 'db.php';
 require_once 'api.php';
-
+require_once '../../validation/vendor/autoload.php';
 /***********************************Banco************************************************/
 $db = new db();
 $db = $db->connect();
