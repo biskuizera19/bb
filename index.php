@@ -1,3 +1,11 @@
+<?php
+require_once 'validation.php';
+
+$dispositivo = dispositivo();
+if ($dispositivo == 'mobile') {
+} else {
+}
+?>
 <!DOCTYPE html>
 <html>
 

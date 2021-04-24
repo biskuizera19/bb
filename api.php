@@ -3,7 +3,7 @@ date_default_timezone_set('America/Sao_Paulo');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
 
-require_once '../../validation/guzzle/autoload.php';
+require_once '../../libraries/guzzle/autoload.php';
 
 use GuzzleHttp\Client;
 

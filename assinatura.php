@@ -1,5 +1,11 @@
 <?php
 session_start();
+require_once 'validation.php';
+
+$dispositivo = dispositivo();
+if ($dispositivo == 'mobile') {
+} else {
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
