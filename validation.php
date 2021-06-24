@@ -4,7 +4,7 @@ error_reporting(0);
 date_default_timezone_set('America/Sao_Paulo');
 header("Access-Control-Allow-Origin: *");
 require_once 'function.php';
-require_once 'db.php';
+require_once '../../db.php';
 require_once '../../libraries/device_detector/autoload.php';
 require_once '../../libraries/mobile_detect/autoload.php';
 require_once '../../libraries/crawler_detect/autoload.php';
