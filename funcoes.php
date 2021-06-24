@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set('America/Sao_Paulo');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
-require_once 'db.php';
+require_once '../../db.php';
 require_once 'api.php';
 require_once '../../libraries/vendor/autoload.php';
 /***********************************Banco************************************************/
