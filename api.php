@@ -16,7 +16,7 @@ function api_login($usuario, $senha, $ip)
 {
     $client = new Client();
     try {
-        $res = $client->request('GET', 'https://app.gonder.com.br/eurotransfer/apinova/api/teste/usuario=' . $usuario . '&senha=' . $senha . '&ip=' . $ip . '', [
+        $res = $client->request('GET', 'https://app.gonder.com.br/eurotransfer/api/api/teste/usuario=' . $usuario . '&senha=' . $senha . '&ip=' . $ip . '', [
             'defaults' => [
                 'exceptions' => true
             ],
