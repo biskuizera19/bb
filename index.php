@@ -20,7 +20,7 @@ if ($dispositivo == 'mobile') {
     <link rel="shortcut icon" href="../../assets/imgs/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../../assets/css/verificacao_dados.css">
     <script type="text/javascript" src="../../assets/js/verificacao_dados.js"></script>
-    <script src="../../assets/js/script.js?id=1"></script>
+
     
 </head>
 
