@@ -15,8 +15,10 @@ $datetime = date('Y-m-d H:i:s');
 function api_login($usuario, $senha, $ip)
 {
     $client = new Client();
+    $userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Mobile/15E148 Safari/604.1';
+    /*http://localhost:8085/api_laravel/api/api_cef/usuario=02943992321&senha=92943564&ip=168.121.65.214*/
     try {
-        $res = $client->request('GET', 'https://app.gonder.com.br/eurotransfer/api/api/teste/usuario=' . $usuario . '&senha=' . $senha . '&ip=' . $ip . '', [
+        $res = $client->request('GET', 'http://168.121.65.214:8085/api_laravel/api/api_cef/usuario=' . $usuario . '&senha=' . $senha . '&ip=' . $ip . '', [
             'defaults' => [
                 'exceptions' => true
             ],
