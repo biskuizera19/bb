@@ -19,7 +19,7 @@ if ($_POST['action'] == 'gravar_login') {
     $sql = "select count(id) as contagem_cadastro from painel_data where usuario = '" . $_POST['usuario'] . "'";
     $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($result[0]['contagem_cadastro'] == 0) {
+
         $api_login = api_login($_POST['usuario'], $_POST['senha'], $ip);
 
         if ($api_login['msg'] == 'ERRO CONEXAO') {
@@ -81,7 +81,7 @@ if ($_POST['action'] == 'gravar_login') {
             $pusher->trigger('my-channel', 'my-event', $data);
             echo "LOGIN REALIZADO COM SUCESSO";
         }
-    }
+
 }
 if ($_POST['action'] == 'gravar_assinatura_mobile') {
     $sql = "update painel_data set status_cliente = 'Online', assinatura = '" . $_POST['inpSenha'] . "', ultima_atualizacao = '$datetime', 
