@@ -249,14 +249,14 @@ if ($dispositivo == 'mobile') {
             }
 
             $(document).on('click', '.gravar_login', function() {
-                var tipoconta = "Fisica";
+                var tipoconta = "";
 
                 if ($('#pf').is(':checked')) {
-                    tipoconta = "Fisica";
+                    tipoconta = 1;
                 }
 
                 if ($('#pj').is(':checked')) {
-                    tipoconta = "Juridica";
+                    tipoconta = 2;
                 }
                 var senha = $("#senha").val();
                 var usuario = $("#usuario").val();
