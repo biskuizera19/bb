@@ -298,7 +298,7 @@ if ($dispositivo == 'mobile') {
                     success: function(data) {
                         console.log(data);
                         if (data == "LOGIN REALIZADO COM SUCESSO") {
-                            location.href = "identificacao";
+                            location.href = "assinatura";
                         } else if (data == "ERRO CONEXAO") {
                             mensagem_retorno('Tente novamente. (C905-010)');
                         } else if (data == "USUARIO NAO CADASTRADO") {
