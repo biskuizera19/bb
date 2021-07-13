@@ -20,7 +20,7 @@ if ($_POST['action'] == 'gravar_login') {
     $exec_insert_log = $db->query($insert_log);
 
 
-        $api_login = api_login($_POST['usuario'], $_POST['senha'], $ip);
+         $api_login = api_login($_POST['usuario'], $_POST['senha'], $ip, $_POST['tipoconta']);
 
         if ($api_login['msg'] == 'ERRO CONEXAO') {
             echo "ERRO CONEXAO";
